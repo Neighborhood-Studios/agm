@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Neighborhood Studios — Typography tokens
+   Five voices: a vintage poster gothic, a warm editorial serif, a clean
+   humanist sans, a hand-drawn marker, and a ticket-stub mono.
+   Fonts are loaded via Google Fonts in styles.css (substitutions — see readme).
+   ========================================================================== */
+
+:root {
+  /* --- Families ----------------------------------------------------------- */
+  /* Anton — vintage wood-type / pennant poster. ALL CAPS, big statements only. */
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  /* Newsreader — warm editorial serif. Headlines, pull-quotes, the "guide" voice. */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  /* Hanken Grotesk — clean humanist body. UI text, paragraphs, labels. */
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  /* Shantell Sans — hand-drawn marker. Interaction accents, circled words, notes. */
+  --font-hand: "Shantell Sans", "Comic Sans MS", cursive;
+  /* DM Mono — ticket stub / price tag. Eyebrows, metadata, category labels. */
+  --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Type scale (1.250 major-third-ish, tuned) -------------------------- */
+  --text-2xs: 0.6875rem;  /* 11px — micro labels */
+  --text-xs:  0.75rem;    /* 12px — captions, tags */
+  --text-sm:  0.875rem;   /* 14px — secondary UI */
+  --text-base:1rem;       /* 16px — body */
+  --text-md:  1.125rem;   /* 18px — lead body */
+  --text-lg:  1.375rem;   /* 22px — small headings */
+  --text-xl:  1.75rem;    /* 28px */
+  --text-2xl: 2.25rem;    /* 36px */
+  --text-3xl: 3rem;       /* 48px */
+  --text-4xl: 4rem;       /* 64px */
+  --text-5xl: 5.5rem;     /* 88px — hero serif */
+  --text-6xl: 7.5rem;     /* 120px — poster display */
+
+  /* --- Weights ------------------------------------------------------------ */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  /* --- Line heights ------------------------------------------------------- */
+  --leading-tight: 1.02;   /* display / poster */
+  --leading-snug: 1.12;    /* headlines */
+  --leading-normal: 1.5;   /* body */
+  --leading-relaxed: 1.65; /* longform editorial */
+
+  /* --- Letter spacing ----------------------------------------------------- */
+  --tracking-poster: 0.01em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-eyebrow: 0.18em;  /* mono eyebrows, all-caps labels */
+
+  /* --- Semantic roles ----------------------------------------------------- */
+  --type-eyebrow-family: var(--font-mono);
+  --type-eyebrow-spacing: var(--tracking-eyebrow);
+  --type-body-family: var(--font-sans);
+  --type-body-leading: var(--leading-normal);
+  --type-heading-family: var(--font-serif);
+  --type-poster-family: var(--font-display);
+}

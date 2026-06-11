@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Neighborhood Studios — Color tokens
+   A warm, well-worn neighborhood palette: cream paper, charcoal ink,
+   a lemon-yellow signature pop, and a collage of general-store accents.
+   ========================================================================== */
+
+:root {
+  /* --- Brand core --------------------------------------------------------- */
+  --nbs-yellow: #ffee00;        /* the knot mark — signature pop */
+  --nbs-yellow-deep: #e6d400;   /* hover/press on yellow */
+  --nbs-yellow-soft: #fff7a3;   /* tints, highlights, marker swipe */
+  --nbs-ink: #2e2e2e;           /* charcoal near-black (logo ink) */
+  --nbs-ink-soft: #54504a;      /* secondary ink */
+  --nbs-ink-faint: #8a8378;     /* tertiary / captions */
+
+  /* --- Paper & surfaces (warm, off-white) -------------------------------- */
+  --paper: #f5efe2;             /* primary cream background */
+  --paper-deep: #ece2cf;        /* sunk panels, alternating sections */
+  --paper-edge: #e0d4bd;        /* hairline against cream */
+  --surface: #fffdf7;           /* card / raised surface (warm white) */
+  --surface-2: #faf4e7;         /* secondary card */
+
+  /* --- Collage accents (from the moodboard) ------------------------------ */
+  --cobalt: #2b4c9b;            /* DRAG ME blue / Brooklyn-guide cover */
+  --cobalt-deep: #1f3a78;
+  --cobalt-soft: #d7e0f2;
+  --brick: #c2402d;             /* apple-crate red / kit red */
+  --brick-deep: #9d3022;
+  --brick-soft: #f3d8cf;
+  --forest: #2e5d43;            /* soccer-pitch / hand-printed green */
+  --forest-deep: #214733;
+  --forest-soft: #d3e3d6;
+  --kraft: #c9a36b;             /* burlap / cardboard tan */
+  --kraft-deep: #a9824b;
+  --kraft-soft: #ecddc2;
+  --sign-black: #1f1e1c;        /* enamel-sign black */
+
+  /* --- Borders & lines ---------------------------------------------------- */
+  --line: #ddd1ba;              /* hairline on paper */
+  --line-strong: #c7b89b;       /* heavier rule */
+  --line-ink: var(--nbs-ink);   /* hand-drawn ink outline */
+
+  /* ======================================================================
+     Semantic aliases — reach for THESE in components / layouts.
+     ====================================================================== */
+  --bg-page: var(--paper);
+  --bg-page-alt: var(--paper-deep);
+  --surface-card: var(--surface);
+  --surface-card-2: var(--surface-2);
+  --surface-sunk: var(--paper-deep);
+  --surface-ink: var(--sign-black);   /* dark/enamel sections */
+
+  --text-primary: var(--nbs-ink);
+  --text-secondary: var(--nbs-ink-soft);
+  --text-muted: var(--nbs-ink-faint);
+  --text-on-ink: var(--paper);
+  --text-on-yellow: var(--nbs-ink);
+  --text-link: var(--cobalt);
+
+  --border-default: var(--line);
+  --border-strong: var(--line-strong);
+  --border-ink: var(--nbs-ink);
+
+  --accent-primary: var(--nbs-yellow);
+  --accent-on-primary: var(--nbs-ink);
+
+  /* Status — borrowed from the collage, never neon */
+  --status-success: var(--forest);
+  --status-success-soft: var(--forest-soft);
+  --status-info: var(--cobalt);
+  --status-info-soft: var(--cobalt-soft);
+  --status-warn: var(--kraft-deep);
+  --status-warn-soft: var(--kraft-soft);
+  --status-danger: var(--brick);
+  --status-danger-soft: var(--brick-soft);
+
+  /* Focus ring */
+  --focus-ring: var(--cobalt);
+}
