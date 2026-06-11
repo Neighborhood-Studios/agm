@@ -270,7 +270,7 @@
     .agenda { grid-template-columns: 1fr; gap: 9px; }
     .wainscot { height: 70px; }
     .footer { height: 70px; }
-    .board { width: 92vw; padding-left: clamp(18px,5vw,28px); padding-right: clamp(18px,5vw,28px); }
+    .board { width: 80vw; padding-left: clamp(18px,5vw,28px); padding-right: clamp(18px,5vw,28px); transform: rotate(-1deg) !important; }
     .center { padding-left: 4vw; padding-right: 4vw; }
     .brand .logo-h { height: 22px; }
     .topnav { gap: 15px; font-size: 10px; letter-spacing: .1em; }
@@ -728,6 +728,11 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
+        // Skip auto-fit scaling on mobile — handled by CSS width: 80vw.
+        if (window.matchMedia('(max-width: 760px)').matches) {
+          board.style.setProperty('--fit', '1');
+          return;
+        }
         board.style.setProperty('--fit', '1');
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
