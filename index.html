@@ -650,7 +650,7 @@
 
       <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /><div class="ov"><p>Neighborhood, lights on.</p></div></div><div class="f1-cap"><span class="no">01</span><span>The Studio, always on</span></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/january-sign.png" alt="January, launching" /><div class="ov"><p>January — a simple, supported way to plan after loss.</p></div></div><div class="f1-cap"><span class="no">02</span><span>January, launching</span></div><a class="egg e4 egg-pin to-left" href="https://www.youtube.com/watch?v=0snXUgHrnAU" target="_blank" rel="noopener" aria-label="Jeff Bezos"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/bezos.png" alt="" /></span></a></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/january-sign.png" alt="January, launching" /><div class="ov"><p>January — a simple, supported way to plan after loss.</p></div></div><div class="f1-cap"><span class="no">02</span><span>January, launching</span></div><a class="egg e4 egg-pin to-left" href="https://www.quora.com/What-is-the-meaning-of-Mark-Twains-quote-Its-not-what-we-dont-know-that-gets-us-in-trouble-Its-what-we-know-for-sure-that-just-aint-so" target="_blank" rel="noopener" aria-label="Mark Twain"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/mark-twain.png" alt="" /></span></a></figure></div>
 
       <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/team-outside.jpeg" alt="Homegrown outing" /><div class="ov"><p>The crew, between sessions.</p></div></div><div class="f1-cap"><span class="no">03</span><span>Homegrown outing</span></div></figure></div>
 
@@ -668,7 +668,7 @@
 
       <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/ladder-1.jpeg" alt="January launching" /><div class="ov"><p>January makes The Wall.</p></div></div><div class="f1-cap"><span class="no">10</span><span>January launching</span></div><a class="egg e3 egg-pin to-left" href="https://x.com/RyanHoliday/status/1923816549095440738/photo/1" target="_blank" rel="noopener" aria-label="Ryan Holiday"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/ryan-holiday.png" alt="" /></span></a></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/prize-wheel.jpeg" alt="How we decide lunch" /><div class="ov"><p>The decision wheel. Don’t ask.</p></div></div><div class="f1-cap"><span class="no">11</span><span>How we decide lunch</span></div><a class="egg e2 egg-pin to-right" href="https://www.quora.com/What-is-the-meaning-of-Mark-Twains-quote-Its-not-what-we-dont-know-that-gets-us-in-trouble-Its-what-we-know-for-sure-that-just-aint-so" target="_blank" rel="noopener" aria-label="Mark Twain"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/mark-twain.png" alt="" /></span></a></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/prize-wheel.jpeg" alt="How we decide lunch" /><div class="ov"><p>The decision wheel. Don’t ask.</p></div></div><div class="f1-cap"><span class="no">11</span><span>How we decide lunch</span></div><a class="egg e2 egg-pin to-right" href="https://www.youtube.com/watch?v=0snXUgHrnAU" target="_blank" rel="noopener" aria-label="Jeff Bezos"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/bezos.png" alt="" /></span></a></figure></div>
 
       <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/warehouse-night.jpeg" alt="Late nights" /><div class="ov"><p>The studio’s temporary warehouse office.</p></div></div><div class="f1-cap"><span class="no">12</span><span>Late nights</span></div></figure></div>
 
@@ -715,11 +715,6 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
-        // Mobile: skip auto-fit scale — board is sized by CSS (width: 80vw, rotate-only transform).
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          board.style.setProperty('--fit', '1');
-          return;
-        }
         board.style.setProperty('--fit', '1');
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
