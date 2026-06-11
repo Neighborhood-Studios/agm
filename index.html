@@ -23,10 +23,10 @@
       radial-gradient(120% 78% at 50% -12%, #fcf8ee 0%, var(--paper) 44%, var(--paper-deep) 100%);
   }
   /* Founder's letter hero — the text is the focus, little else */
-  .letter { max-width: 660px; margin: 0 auto; padding: clamp(96px,13vh,150px) 24px clamp(56px,8vh,96px); position: relative; z-index: 5; }
+  .letter { max-width: 680px; margin: 0 auto; padding: clamp(48px,7vh,90px) 24px; position: relative; z-index: 5; width: 100%; box-sizing: border-box; }
   .letter-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--nbs-ink-soft); margin: 0 0 22px; }
   .letter-eyebrow .dot { color: var(--brick); }
-  .letter-body p { font-family: var(--font-serif); font-size: clamp(16px,1.55vw,20px); line-height: 1.5; color: var(--nbs-ink); margin: 0 0 0.7em; text-wrap: pretty; }
+  .letter-body p { font-family: var(--font-serif); font-size: clamp(17px,1.7vw,22px); line-height: 1.55; color: var(--nbs-ink); margin: 0 0 0.7em; text-wrap: pretty; }
   .letter-body .greeting { font-weight: 600; }
   .letter-body .hl { background: linear-gradient(180deg,transparent 56%,var(--nbs-yellow) 56%,var(--nbs-yellow) 92%,transparent 92%); padding: 0 .04em; }
   .sign-off { margin-top: 26px; }
@@ -82,6 +82,22 @@
   }
   .topbar.show { transform: translateY(0); opacity: 1; }
   .topbar.show .brand, .topbar.show .topnav { pointer-events: auto; }
+
+  /* aged-letter paper background — hero only */
+  .wall.letter-hero {
+    display: flex; align-items: center;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 35px, rgba(125,95,45,.016) 35px 36px),
+      radial-gradient(125% 95% at 50% 0%, #fbf4e1 0%, #f4ead2 52%, #ead9ba 100%);
+  }
+  .wall.letter-hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    box-shadow: inset 0 0 140px rgba(150,115,60,.22), inset 0 0 40px rgba(120,85,35,.10);
+    background:
+      radial-gradient(60% 50% at 18% 22%, rgba(150,115,55,.10), transparent 60%),
+      radial-gradient(55% 45% at 85% 78%, rgba(150,115,55,.10), transparent 60%);
+  }
+  .wall.letter-hero .letter { position: relative; z-index: 2; }
   .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
   .brand img { width: 34px; height: auto; }
   .brand .logo-h { width: auto; height: 30px; }
@@ -275,7 +291,7 @@
 </style>
 </head>
 <body>
-  <div class="wall nbs-grain">
+  <div class="wall nbs-grain letter-hero">
     <!-- Top bar -->
     <header class="topbar">
       <a class="brand" href="#">
@@ -623,7 +639,7 @@
       <div class="head reveal">
         <p class="eyebrow">The scrapbook</p>
         <h2><span class="hl">Studio</span> moments.</h2>
-        <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, and the life inside the studio.</p>
+        <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, &amp; the life inside the studio.</p>
       </div>
 
       <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /></div></figure></div>
@@ -714,11 +730,6 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
-        // Mobile: skip auto-fit scale — board sized by CSS (width: 80vw).
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          board.style.setProperty('--fit', '1');
-          return;
-        }
         board.style.setProperty('--fit', '1');
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
