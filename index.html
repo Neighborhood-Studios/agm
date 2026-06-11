@@ -715,6 +715,11 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
+        // Mobile: skip auto-fit scale — board sized by CSS (width: 80vw).
+        if (window.matchMedia('(max-width: 760px)').matches) {
+          board.style.setProperty('--fit', '1');
+          return;
+        }
         board.style.setProperty('--fit', '1');
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
