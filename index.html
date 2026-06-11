@@ -30,7 +30,7 @@
   .letter-body .greeting { font-weight: 600; }
   .letter-body .hl { background: linear-gradient(180deg,transparent 56%,var(--nbs-yellow) 56%,var(--nbs-yellow) 92%,transparent 92%); padding: 0 .04em; }
   .sign-off { margin-top: 26px; }
-  .sign-off .sig { display: block; font-family: var(--font-hand); font-weight: 600; font-size: clamp(40px,6.5vw,62px); color: var(--nbs-ink); line-height: 1; transform: rotate(-4deg); transform-origin: left center; width: max-content; }
+  .sign-off .sig { display: block; font-family: var(--font-serif); font-style: normal; font-weight: 400; font-size: clamp(16px,1.55vw,20px); color: var(--nbs-ink); line-height: 1.5; transform: none; transform-origin: left center; width: max-content; }
   .sign-off .sig-name { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--nbs-ink-soft); margin-top: 24px; }
   .letter-meta { margin-top: 30px; padding-top: 22px; border-top: 1.5px solid var(--line); display: flex; align-items: center; gap: 16px 20px; flex-wrap: wrap; }
   .letter-meta .when { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--nbs-ink); }
@@ -70,12 +70,18 @@
 
   /* ---- Top utility bar -------------------------------------------------- */
   .topbar {
-    position: absolute; top: 0; left: 0; right: 0; height: 60px; z-index: 30;
+    position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 60;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 clamp(18px, 3vw, 40px);
     pointer-events: none;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%); opacity: 0;
+    transition: transform .35s var(--ease-out), opacity .35s var(--ease-out);
   }
-  .topbar .brand, .topbar .topnav { pointer-events: auto; }
+  .topbar.show { transform: translateY(0); opacity: 1; }
+  .topbar.show .brand, .topbar.show .topnav { pointer-events: auto; }
   .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
   .brand img { width: 34px; height: auto; }
   .brand .logo-h { width: auto; height: 30px; }
@@ -111,12 +117,12 @@
   .tape.tr { top: -13px; right: 24px; transform: rotate(6deg); }
 
   /* rubber-stamp mark */
-  .stamp { position: absolute; top: 14px; right: 16px; width: 78px; height: 78px; transform: rotate(11deg); opacity: .92; }
+  .stamp { position: absolute; top: 8px; right: 10px; width: 78px; height: 78px; transform: rotate(11deg); opacity: .92; }
   .stamp .ring { position: absolute; inset: 0; border: 2.5px dashed var(--brick); border-radius: 50%; opacity: .8; }
-  .stamp .ring2 { position: absolute; inset: 9px; border: 1.5px solid var(--brick); border-radius: 50%; opacity: .55; }
-  .stamp .txt { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-mono); font-size: 8px; letter-spacing: .12em; color: var(--brick); text-transform: uppercase; text-align: center; line-height: 1.25; opacity: .85; }
+  .stamp .ring2 { position: absolute; inset: 5px; border: 1.5px solid var(--brick); border-radius: 50%; opacity: .55; }
+  .stamp .txt { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .02em; color: var(--brick); text-transform: lowercase; text-align: center; line-height: 1.15; opacity: .85; }
 
-  .ornament { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--nbs-ink); margin: 0 0 9px; }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--nbs-ink); margin: clamp(8px,1.6vw,16px) 0 clamp(12px,1.8vw,20px); }
   .ornament .ln { height: 2px; width: 46px; background: currentColor; opacity: .65; }
   .ornament .di { width: 7px; height: 7px; background: var(--brick); transform: rotate(45deg); }
 
@@ -124,7 +130,7 @@
   .eyebrow .dot { color: var(--brick); }
   h1.title {
     font-family: var(--font-serif); font-weight: 800; color: var(--nbs-ink);
-    font-size: clamp(28px, 4.4vw, 46px); line-height: 1.04; letter-spacing: -.02em; margin: 0;
+    font-size: clamp(23px, 3.5vw, 38px); line-height: 1.08; letter-spacing: -.02em; margin: 0; padding: 0 clamp(20px,4vw,44px);
     text-wrap: balance;
   }
   h1.title .hl { background: linear-gradient(180deg, transparent 58%, var(--nbs-yellow) 58%, var(--nbs-yellow) 94%, transparent 94%); padding: 0 .06em; }
@@ -279,29 +285,21 @@
         <a href="#event">Overview</a>
         <a href="#one-day">Agenda</a>
         <a href="#fund-one">Photos</a>
-        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=dave@neighborhoodstudios.com,whit@neighborhoodstudios.com&amp;su=RSVP%20to%20Neighborhood%20Studios%20AGM&amp;body=Count%20me%20in%20for%20Neighborhood%20Studios%20AGM.%0A%0AThanks." target="_blank" rel="noopener">RSVP</a>
       </nav>
     </header>
 
     <!-- Founder's letter -->
     <main class="letter">
-      <p class="letter-eyebrow">Neighborhood Studios <span class="dot">·</span> Annual General Meeting <span class="dot">·</span> 2026</p>
       <div class="letter-body">
         <p>Three years ago we started Neighborhood Studios because we believed there was a different way to build startups.</p>
         <p>The opportunity was hiding in everyday life. Your neighborhood. Your home. Your kid&rsquo;s school. The local business around the corner.</p>
-        <p>Our hunch was simple: if we could find real problems, validate sharp insights &amp; test novel product wedges quickly, we could <span class="hl">give great founders a meaningful head start.</span></p>
-        <p>The early results from Fund 1 are now in. We&rsquo;ve learned a lot, built a lot, gotten some things wrong &amp; seen enough to make us even more convinced than when we started.</p>
-        <p>So in November, we&rsquo;re bringing everyone together for the first Neighborhood Studios Annual General Meeting for studio investors. We&rsquo;ll share the companies, the numbers, the lessons &amp; where we&rsquo;re headed next with Fund 2.</p>
-        <p>We&rsquo;ll dig in on Friday morning.</p>
+        <p>Our belief was simple: if we could find unique insights about real problems that touch our daily lives and test novel product wedges quickly, we could give great founders a meaningful head start.</p>
+        <p>The early results from Fund I are now in. We&rsquo;ve learned a lot, built a lot, gotten some things wrong &amp; seen enough to make us even more convinced than when we started.</p>
+        <p>So in November, we&rsquo;re bringing everyone together for the first Neighborhood Studios Annual General Meeting for studio investors. We&rsquo;ll share the companies, the numbers, the lessons &amp; where we&rsquo;re headed next with Fund II.</p>
         <p>We&rsquo;d love to have you there.</p>
-      </div>
+            </div>
       <div class="sign-off">
-        <span class="sig">Dave</span>
-        <span class="sig-name">Dave Payne &middot; Founder, Neighborhood Studios</span>
-      </div>
-      <div class="letter-meta">
-        <span class="when">Nov 13 &middot; Decatur, GA</span>
-        <a class="btn ghost" href="#one-day">See the agenda</a>
+        <span class="sig">Dave, Tapan, Jonathan &amp; Whit</span>
       </div>
     </main>
   </div>
@@ -316,27 +314,9 @@
     </div>
 
     <!-- LEFT column -->
-    <div class="tagchip" id="o-tag">
-      <span class="twine"></span>
-      <div class="swing">
-        <span class="hole"></span>
-        <div class="lbl">Admission</div>
-        <div class="big">FREE</div>
-      </div>
-    </div>
 
     <!-- taped handwritten notes -->
-    <div class="note opt" id="o-coffee" data-r="-3" style="--r:-3deg;">
-      <span class="tapebit"></span>
-      <p>coffee &amp; donuts<br />in the back —<br />help yourself</p>
-      <span class="sig">— the studio ☕</span>
-    </div>
 
-    <div class="note opt" id="o-raffle" data-r="3" style="--r:3deg;">
-      <span class="tapebit" style="background:rgba(255,238,0,.55)"></span>
-      <p>our first AGM</p>
-      <span class="sig">(three years later)</span>
-    </div>
 
     <!-- beadboard wainscoting -->
     <div class="wainscot" aria-hidden="true"></div>
@@ -348,24 +328,22 @@
         <span class="tape tr"></span>
         <div class="stamp" aria-hidden="true">
           <span class="ring"></span><span class="ring2"></span>
-          <span class="txt">NBS<br />ATL<br />2026</span>
+          <span class="txt">Locally<br />world<br />famous</span>
         </div>
 
         <div class="ornament" aria-hidden="true"><span class="ln"></span><span class="di"></span><span class="ln"></span></div>
-        <p class="eyebrow">Neighborhood Studios <span class="dot">·</span> Annual Meeting <span class="dot">·</span> 2026</p>
-        <h1 class="title">The best investors<br />in Atlanta,<br /><span class="hl">all in one room.</span></h1>
-        <p class="poster">A day at the studio</p>
-        <p class="lede">A morning to look back at Fund 1. Meet the companies we built from zero, and then talk about the future of Fund 2.</p>
+        <h1 class="title">Neighborhood Studios&rsquo;<br />First <span class="hl">Annual General Meeting</span></h1>
 
         <div class="facts">
           <span class="fact"><b>FRI</b> · Nov 13 · 8:30 AM&ndash;1 PM · Main session</span>
-          <span class="fact">Decatur, GA</span>
+          <span style="flex-basis:100%;height:0"></span>
+          <span class="fact">2855 Washington Street · Avondale Estates, GA 30002</span>
         </div>
 
         <div class="agenda">
-          <div class="item"><div class="n">01</div><div class="h">Year in review</div><div class="d">What we learned on the ground, block by block.</div></div>
-          <div class="item"><div class="n">02</div><div class="h">New companies</div><div class="d">Meet the founders building them from zero.</div></div>
-          <div class="item"><div class="n">03</div><div class="h">What&rsquo;s next</div><div class="d">The future of Fund 2 &mdash; hyperlocal startups in the age of AI.</div></div>
+          <div class="item"><div class="n">01</div><div class="h">Financial performance</div><div class="d">A clear look at Fund I&rsquo;s numbers and how the portfolio is tracking.</div></div>
+          <div class="item"><div class="n">02</div><div class="h">What&rsquo;s next</div><div class="d">Where we&rsquo;re headed with Fund II and how our process has improved.</div></div>
+          <div class="item"><div class="n">03</div><div class="h">Meet other investors</div><div class="d">Lunch and networking with the people backing the studio.</div></div>
         </div>
 
         <div class="cta">
@@ -443,7 +421,7 @@
     /* ===================== Section: studio values marquee ===================== */
     /* studio values — slow single-row outlined marquee at the foot of #days */
     .values-band { margin-top: clamp(40px,6vw,80px); width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
-    .values-band .track { display: flex; align-items: center; width: max-content; gap: clamp(20px,3vw,46px); will-change: transform; animation: marq 95s linear infinite; }
+    .values-band .track { display: flex; align-items: center; width: max-content; gap: clamp(20px,3vw,46px); will-change: transform; animation: marq 70s linear infinite; }
     @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .values-band .v { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(26px,3.6vw,52px); line-height: 1; letter-spacing: .01em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.6px var(--nbs-ink); }
     .values-band .sep { width: clamp(10px,1.2vw,15px); height: clamp(10px,1.2vw,15px); flex: none; background: var(--brick); transform: rotate(45deg); border-radius: 2px; }
@@ -504,9 +482,8 @@
   <section class="days" id="one-day">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">The plan <span class="b">·</span> Nov 13 <span class="b">·</span> Decatur, GA</p>
+        <p class="eyebrow">The plan <span class="b">·</span> Nov 13</p>
         <h2>A day <span class="hl">at the studio.</span></h2>
-        <p class="sub">A single working session: the portfolio, the playbook, the lessons, and where Fund 2 goes next.</p>
       </div>
       <div class="grid single">
         <article class="daycard fri reveal">
@@ -517,22 +494,22 @@
             <div class="when">Nov 13 &middot; 8:30 AM &ndash; 1:00 PM</div>
           </div>
           <ol>
-            <li><span class="t">8:30</span><div><h4>Coffee &amp; donuts</h4><p>Settle in over coffee and donuts before we begin.</p></div></li>
-            <li><span class="t">9:00</span><div><h4>Welcome + State of the Studio</h4><p>A candid look at Fund 1 &mdash; where we set out to go and where we are now.</p></div></li>
-            <li><span class="t">9:15</span><div><h4>Fund 1 Portfolio Snapshot</h4><p>A fast review of every company: what launched, what gained traction, and where each stands.</p></div></li>
+            <li><span class="t">8:30</span><div><h4>Coffee &amp; Revolution Doughnuts</h4><p>Settle in over coffee and doughnuts before we begin.</p></div></li>
+            <li><span class="t">9:00</span><div><h4>Welcome + State of the Studio</h4><p>A candid look at Fund I &mdash; where we set out to go and where we are now.</p></div></li>
+            <li><span class="t">9:15</span><div><h4>Fund I Portfolio Snapshot</h4><p>A fast review of every company: what launched, what gained traction, and where each stands.</p></div></li>
             <li><span class="t">9:45</span><div><h4>Studio Founder Deep Dive: Homegrown</h4><p>An up-close look at one of our founders and the company they&rsquo;re building.</p></div></li>
             <li><span class="t">10:15</span><div><h4>Break</h4><p>Coffee, conversation, and a chance to stretch.</p></div></li>
-            <li><span class="t">10:30</span><div><h4>How we&rsquo;re using AI</h4><p>The ways AI is reshaping how we find, test, and build hyperlocal startups.</p></div></li>
+            <li><span class="t">10:30</span><div><h4>How We&rsquo;re Using AI</h4><p>The ways AI is reshaping how we find, test, and build hyperlocal startups.</p></div></li>
             <li><span class="t">10:45</span><div><h4>Lessons Learned</h4><p>An honest look at the mistakes and false starts that taught us the most.</p></div></li>
-            <li><span class="t">11:15</span><div><h4>The Future: Fund 2 &amp; the Next Studio</h4><p>Where we&rsquo;re focusing next and how the studio model is evolving.</p></div></li>
+            <li><span class="t">11:15</span><div><h4>The Future: Our Fund II Plans</h4><p>Where we&rsquo;re focusing next and how the studio model is evolving.</p></div></li>
             <li><span class="t">11:30</span><div><h4>Investor Q&amp;A / Discussion</h4><p>Open questions, feedback, and discussion with the founders and team.</p></div></li>
-            <li><span class="t">12:00</span><div><h4>LP networking / lunch</h4><p>Informal lunch and time to connect with the team and each other.</p></div></li>
+            <li><span class="t">12:00</span><div><h4>LP Networking &amp; Fox Bros BBQ Lunch</h4><p>Informal lunch and time to connect with the team and each other.</p></div></li>
           </ol>
         </article>
       </div>
       <div class="values-band">
         <div class="values-rail top"><div class="rail-track"><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span></div></div>
-        <div class="track"><span class="v">Playful exploration</span><span class="sep"></span><span class="v">Ask dumb questions</span><span class="sep"></span><span class="v">Async voice</span><span class="sep"></span><span class="v">Find it in the dirt</span><span class="sep"></span><span class="v">Steal like an artist</span><span class="sep"></span><span class="v">Small teams change the world</span><span class="sep"></span><span class="v">Always on</span><span class="sep"></span><span class="v">Pound the table</span><span class="sep"></span><span class="v" aria-hidden="true">Playful exploration</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Ask dumb questions</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Async voice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Find it in the dirt</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Steal like an artist</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Small teams change the world</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Always on</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Pound the table</span><span class="sep" aria-hidden="true"></span></div>
+        <div class="track"><span class="v">Playful exploration</span><span class="sep"></span><span class="v">Ask dumb questions</span><span class="sep"></span><span class="v">Async voice</span><span class="sep"></span><span class="v">Find it in the dirt</span><span class="sep"></span><span class="v">Steal like an artist</span><span class="sep"></span><span class="v">Small teams change the world</span><span class="sep"></span><span class="v">Always on</span><span class="sep"></span><span class="v">Pound the table</span><span class="sep"></span><span class="v">Bear hug founders</span><span class="sep"></span><span class="v">Overcommunicating</span><span class="sep"></span><span class="v">Overthinking</span><span class="sep"></span><span class="v">Be honest not nice</span><span class="sep"></span><span class="v">Humble without ego</span><span class="sep"></span><span class="v">Bias towards action</span><span class="sep"></span><span class="v">Friction is good</span><span class="sep"></span><span class="v">Show don’t tell</span><span class="sep"></span><span class="v">Systems not goals</span><span class="sep"></span><span class="v">Very few things truly matter</span><span class="sep"></span><span class="v">Think small</span><span class="sep"></span><span class="v">Be groovy or leave man</span><span class="sep"></span><span class="v">Anti-fragile</span><span class="sep"></span><span class="v">Last to market</span><span class="sep"></span><span class="v">Competition is for suckers</span><span class="sep"></span><span class="v">Technology isn’t computers</span><span class="sep"></span><span class="v" aria-hidden="true">Playful exploration</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Ask dumb questions</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Async voice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Find it in the dirt</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Steal like an artist</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Small teams change the world</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Always on</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Pound the table</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bear hug founders</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overcommunicating</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overthinking</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be honest not nice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Humble without ego</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bias towards action</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Friction is good</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Show don’t tell</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Systems not goals</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Very few things truly matter</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Think small</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be groovy or leave man</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Anti-fragile</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Last to market</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Competition is for suckers</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Technology isn’t computers</span><span class="sep" aria-hidden="true"></span></div>
         <div class="values-rail bottom"><div class="rail-track"><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span></div></div>
       </div>
     </div>
@@ -542,7 +519,7 @@
   <section class="year nbs-grain" id="year" style="display:none">
     <div class="head reveal">
       <p class="eyebrow">From the wall &middot; the year so far</p>
-      <h2>Best of Fund 1</h2>
+      <h2>Best of Fund I</h2>
     </div>
 
     <div class="board-stage" id="board">
@@ -569,7 +546,7 @@
     </div>
   </section>
 
-  <!-- ===================== Section: Best of Fund 1 (editorial gallery) ===================== -->
+  <!-- ===================== Section: Best of Fund I (editorial gallery) ===================== -->
   <style>
     .f1 { position: relative; background: var(--paper); padding: clamp(70px,9vw,140px) 0 clamp(80px,10vw,160px); overflow: hidden; }
     .f1 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(22px,5vw,72px); position: relative; z-index: 3; }
@@ -600,7 +577,7 @@
     /* give every other print a higher stack so the overlap reads */
     .f1-row:nth-child(odd) .f1-fig { z-index: 5; }
     .f1-row:nth-child(even) .f1-fig { z-index: 3; }
-    .f1-fig:hover { z-index: 30; transform: translateX(0) rotate(0deg) scale(1.015); }
+    .f1-fig:hover { z-index: 5; }
     @media (max-width: 760px) {
       .f1-row { margin-top: 0; padding: 14px 0; }
       .f1-row.left .f1-fig, .f1-row.right .f1-fig { transform: rotate(-1deg); }
@@ -612,7 +589,7 @@
     .f1-shot img { display: block; width: 100%; height: auto; }
     .f1-shot .ov { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 22px; background: linear-gradient(0deg, rgba(31,30,28,.72) 0%, rgba(31,30,28,.1) 55%, transparent 100%); opacity: 0; transition: opacity .3s var(--ease-out); }
     .f1-shot .ov p { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: clamp(17px,1.7vw,22px); line-height: 1.25; color: #fff; margin: 0; text-wrap: pretty; }
-    .f1-shot:hover .ov { opacity: 1; }
+    .f1-shot:hover .ov { opacity: 0; }
     .f1-cap { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .03em; color: var(--nbs-ink-faint); margin: 11px 2px 0; display: flex; gap: 10px; position: relative; z-index: 1; }
     .f1-cap .no { color: var(--brick); }
 
@@ -644,76 +621,76 @@
   <section class="f1" id="fund-one">
     <div class="wrap">
       <div class="head reveal">
-        <p class="eyebrow">The scrapbook <span class="b">·</span> Fund 1, in the wild</p>
-        <h2>Best of <span class="hl">Fund 1</span> Photos.</h2>
-        <p class="intro">A year of vans, yard signs, late nights, and first deliveries. Hover any photo for the story &mdash; and keep an eye out for a few things hiding in the margins.</p>
+        <p class="eyebrow">The scrapbook</p>
+        <h2><span class="hl">Studio</span> moments.</h2>
+        <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, and the life inside the studio.</p>
       </div>
 
-      <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /><div class="ov"><p>Neighborhood, lights on.</p></div></div><div class="f1-cap"><span class="no">01</span><span>The Studio, always on</span></div></figure></div>
+      <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/january-sign.png" alt="January, launching" /><div class="ov"><p>January — a simple, supported way to plan after loss.</p></div></div><div class="f1-cap"><span class="no">02</span><span>January, launching</span></div><a class="egg e4 egg-pin to-left" href="https://www.youtube.com/watch?v=0snXUgHrnAU" target="_blank" rel="noopener" aria-label="Jeff Bezos"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/bezos.png" alt=""  /></span></a></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/january-sign.png" alt="January, launching" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/team-outside.jpeg" alt="Homegrown outing" /><div class="ov"><p>The crew, between sessions.</p></div></div><div class="f1-cap"><span class="no">03</span><span>Homegrown outing</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/team-outside.jpeg" alt="Homegrown outing" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/loop-yardsale.jpeg" alt="Loop, in the field" /><div class="ov"><p>Loop’s first neighborhood yard sale.</p></div></div><div class="f1-cap"><span class="no">04</span><span>Loop, in the field</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/loop-yardsale.jpeg" alt="Loop, in the field" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/dandy-guys.jpeg" alt="Dandy handymen" /><div class="ov"><p>Dandy, first day on the job.</p></div></div><div class="f1-cap"><span class="no">05</span><span>Dandy handymen</span></div><a class="egg e5 egg-pin to-right" href="https://sequoiacap.com/article/pmf-framework/" target="_blank" rel="noopener" aria-label="The Hard Fact (Sequoia PMF)"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/sequoia-icon.jpg" alt="" style="border-radius:16px" /></span></a></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/dandy-guys.jpeg" alt="Dandy handymen" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/van-thumbs-up.jpeg" alt="Picking up furniture" /><div class="ov"><p>First delivery. Thumbs up.</p></div></div><div class="f1-cap"><span class="no">06</span><span>Picking up furniture</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/van-thumbs-up.jpeg" alt="Picking up furniture" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/loop-van-team.png" alt="Loop, fully wrapped" /><div class="ov"><p>The Loop crew and the new van.</p></div></div><div class="f1-cap"><span class="no">07</span><span>Loop, fully wrapped</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/loop-van-team.png" alt="Loop, fully wrapped" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/zing-cart-hall.png" alt="Zing, always down the hall" /><div class="ov"><p>Hotel-style housekeeping, built into the building.</p></div></div><div class="f1-cap"><span class="no">08</span><span>Zing, always down the hall</span></div><a class="egg e1 egg-pin to-left" href="https://youtu.be/DcWqzZ3I2cY?si=S3ZYGF1W-Xlmg5OR&amp;t=1281" target="_blank" rel="noopener" aria-label="Amazon"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/amazon.png" alt=""  /></span></a></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/zing-cart-hall.png" alt="Zing, always down the hall" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/dandy-sign.png" alt="Dandy, in Atlanta" /><div class="ov"><p>The neighborhood handyman, official.</p></div></div><div class="f1-cap"><span class="no">09</span><span>Dandy, in Atlanta</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/dandy-sign.png" alt="Dandy, in Atlanta" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/ladder-1.jpeg" alt="January makes The Wall" /><div class="ov"><p>January makes The Wall.</p></div></div><div class="f1-cap"><span class="no">10</span><span>January makes The Wall</span></div><a class="egg e3 egg-pin to-left" href="https://x.com/RyanHoliday/status/1923816549095440738/photo/1" target="_blank" rel="noopener" aria-label="Ryan Holiday"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/ryan-holiday.png" alt=""  /></span></a></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/ladder-1.jpeg" alt="January makes The Wall" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/nextfloor-demo.png" alt="Nextfloor goes live" /><div class="ov"><p>Nextfloor — the apartment community app, shipped.</p></div></div><div class="f1-cap"><span class="no">11</span><span>Nextfloor goes live</span></div><a class="egg e2 egg-pin to-right" href="https://www.quora.com/What-is-the-meaning-of-Mark-Twains-quote-Its-not-what-we-dont-know-that-gets-us-in-trouble-Its-what-we-know-for-sure-that-just-aint-so" target="_blank" rel="noopener" aria-label="Mark Twain"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/mark-twain.png" alt=""  /></span></a></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/nextfloor-demo.png" alt="Nextfloor goes live" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/warehouse-night.jpeg" alt="Late nights" /><div class="ov"><p>The studio’s temporary warehouse office.</p></div></div><div class="f1-cap"><span class="no">12</span><span>Late nights</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/warehouse-night.jpeg" alt="Late nights" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/framing.jpeg" alt="Buildout" /><div class="ov"><p>Building the space, literally.</p></div></div><div class="f1-cap"><span class="no">13</span><span>Buildout</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/framing.jpeg" alt="Buildout" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/hamilton-selfie.png" alt="Our first Zing cleaner" /><div class="ov"><p>The crew, out at The Hamilton.</p></div></div><div class="f1-cap"><span class="no">14</span><span>Our first Zing cleaner</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/hamilton-selfie.png" alt="Our first Zing cleaner" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/holiday-selfie.jpeg" alt="End of year" /><div class="ov"><p>Holiday party.</p></div></div><div class="f1-cap"><span class="no">15</span><span>End of year</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/holiday-selfie.jpeg" alt="End of year" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/holiday-dinner.png" alt="Holiday dinner" /><div class="ov"><p>The Studio Holiday Dinner.</p></div></div><div class="f1-cap"><span class="no">16</span><span>Holiday dinner</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/holiday-dinner.png" alt="Holiday dinner" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/zing-team.png" alt="Zing, day one" /><div class="ov"><p>Zing’s team on launch day.</p></div></div><div class="f1-cap"><span class="no">17</span><span>Zing, day one</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/zing-team.png" alt="Zing, day one" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/ski-trip.png" alt="Big Ridge Trip to Cashiers" /><div class="ov"><p>Big Ridge trip to Cashiers.</p></div></div><div class="f1-cap"><span class="no">18</span><span>Big Ridge Trip to Cashiers</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/ski-trip.png" alt="Big Ridge Trip to Cashiers" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/deep-work.png" alt="Heads down" /><div class="ov"><p>Heads down on a hard problem.</p></div></div><div class="f1-cap"><span class="no">19</span><span>Heads down</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/deep-work.png" alt="Heads down" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/swiftstay-launch.png" alt="Swiftstay launching" /><div class="ov"><p>Pinning Swiftstay up on the wall.</p></div></div><div class="f1-cap"><span class="no">20</span><span>Swiftstay launching</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/swiftstay-launch.png" alt="Swiftstay launching" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/find-it-dirt.png" alt="Find it in the dirt" /><div class="ov"><p>You have to find it in the dirt.</p></div></div><div class="f1-cap"><span class="no">21</span><span>Find it in the dirt</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/find-it-dirt.png" alt="Find it in the dirt" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/hasani-ideawall.png" alt="Zing makes the wall" /><div class="ov"><p>Zing makes the wall.</p></div></div><div class="f1-cap"><span class="no">22</span><span>Zing makes the wall</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/hasani-ideawall.png" alt="Zing makes the wall" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/ski-phone.png" alt="Deal on the slopes" /><div class="ov"><p>Closing a deal mid-run.</p></div></div><div class="f1-cap"><span class="no">23</span><span>Deal on the slopes</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/ski-phone.png" alt="Deal on the slopes" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/loop-pickup-sign.png" alt="Loop item pickup" /><div class="ov"><p>Curbside, the Loop way.</p></div></div><div class="f1-cap"><span class="no">24</span><span>Loop item pickup</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/loop-pickup-sign.png" alt="Loop item pickup" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/dandy-hat.png" alt="Dandy, suited up" /><div class="ov"><p>Ready for the neighborhood.</p></div></div><div class="f1-cap"><span class="no">25</span><span>Dandy, suited up</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/dandy-hat.png" alt="Dandy, suited up" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/headphones-brick.png" alt="In the zone" /><div class="ov"><p>Heads-down at the cafe.</p></div></div><div class="f1-cap"><span class="no">26</span><span>In the zone</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/headphones-brick.png" alt="In the zone" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/team-dinner.png" alt="Supper on the deck" /><div class="ov"><p>The whole table, together.</p></div></div><div class="f1-cap"><span class="no">27</span><span>Supper on the deck</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/team-dinner.png" alt="Supper on the deck" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/christmas-sweater.png" alt="Holiday party sweater" /><div class="ov"><p>Holiday party sweater game.</p></div></div><div class="f1-cap"><span class="no">28</span><span>Holiday party sweater</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/christmas-sweater.png" alt="Holiday party sweater" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/tubeman-lunch.png" alt="Lunch with the mascot" /><div class="ov"><p>The Loop tube man joins lunch.</p></div></div><div class="f1-cap"><span class="no">29</span><span>Lunch with the mascot</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/tubeman-lunch.png" alt="Lunch with the mascot" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/garage-sale-sign.png" alt="Massive Decatur garage sale" /><div class="ov"><p>Loop hits the streets.</p></div></div><div class="f1-cap"><span class="no">30</span><span>Massive Decatur garage sale</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/garage-sale-sign.png" alt="Massive Decatur garage sale" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/waterfall-crew.png" alt="Off the grid" /><div class="ov"><p>The crew, at the falls.</p></div></div><div class="f1-cap"><span class="no">31</span><span>Off the grid</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/waterfall-crew.png" alt="Off the grid" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/tubeman-army.png" alt="An army of mascots" /><div class="ov"><p>Forty tube men, ready to deploy.</p></div></div><div class="f1-cap"><span class="no">32</span><span>An army of mascots</span></div></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/tubeman-army.png" alt="An army of mascots" /></div></figure></div>
 
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/studio-lounge.png" alt="The studio, doors open" /><div class="ov"><p>Garage door up. The studio lounge on a good afternoon.</p></div></div><div class="f1-cap"><span class="no">33</span><span>The studio, doors open</span></div></figure></div>
+      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/studio-lounge.png" alt="The studio, doors open" /></div></figure></div>
     </div>
   </section>
 
@@ -737,11 +714,6 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
-        // Mobile: skip auto-fit scale — board sized by CSS (width: 80vw).
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          board.style.setProperty('--fit', '1');
-          return;
-        }
         board.style.setProperty('--fit', '1');
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
@@ -795,6 +767,16 @@
       // safety net: reveal anything already in view shortly after load
       function sweep() { items.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight * 0.92) show(el); }); }
       window.addEventListener('load', function () { setTimeout(sweep, 300); });
+    })();
+  </script>
+  <script>
+    // Scroll-reveal top nav: hidden at the very top, slides in after a little scroll, hides again at top.
+    (function(){
+      var bar=document.querySelector('.topbar');
+      if(!bar) return;
+      function update(){ if((window.scrollY||window.pageYOffset||0) > 140) bar.classList.add('show'); else bar.classList.remove('show'); }
+      update();
+      window.addEventListener('scroll', update, { passive:true });
     })();
   </script>
 </body>
