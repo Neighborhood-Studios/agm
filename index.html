@@ -249,9 +249,10 @@
   @media (max-width: 760px) {
     .agenda { grid-template-columns: 1fr; gap: 9px; }
     .wainscot { height: 70px; }
-    .footer { height: 70px; }
+    .footer { display: none; }
+    #event { min-height: auto; }
     .board { width: 80vw; transform: rotate(-1deg) !important; padding-left: clamp(16px,4.5vw,26px); padding-right: clamp(16px,4.5vw,26px); }
-    .center { padding-left: 4vw; padding-right: 4vw; }
+    .center { position: relative; z-index: 25; padding: 88px 4vw 56px; }
     .brand .logo-h { height: 22px; }
     .topnav { gap: 15px; font-size: 10px; letter-spacing: .1em; }
     /* keep it uncluttered — drop the tag + handwritten notes on small screens */
@@ -376,7 +377,7 @@
           <div class="stub">
             <div class="l">
               <span class="admit">Admit one</span>
-              <span class="sub">Doors open 8:00a FRI</span>
+              <span class="sub">Doors open 8:30a FRI</span>
             </div>
             <span class="no">No. 01</span>
           </div>
