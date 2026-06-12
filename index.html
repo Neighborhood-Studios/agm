@@ -7,18 +7,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Neighborhood Studios — Annual Meeting</title>
-<meta name="description" content="Neighborhood Studios' First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Neighborhood Studios — Annual Meeting" />
-<meta property="og:description" content="First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta property="og:url" content="https://agm.neighborhoodstudios.com/" />
-<meta property="og:image" content="https://agm.neighborhoodstudios.com/og-image.jpg" />
-<meta property="og:image:width" content="1024" />
-<meta property="og:image:height" content="524" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Neighborhood Studios — Annual Meeting" />
-<meta name="twitter:description" content="First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta name="twitter:image" content="https://agm.neighborhoodstudios.com/og-image.jpg" />
 <link rel="stylesheet" href="./styles.css" />
 <link rel="icon" href="./assets/logos/mark.png" />
 <style>
@@ -35,10 +23,10 @@
       radial-gradient(120% 78% at 50% -12%, #fcf8ee 0%, var(--paper) 44%, var(--paper-deep) 100%);
   }
   /* Founder's letter hero — the text is the focus, little else */
-  .letter { max-width: 660px; margin: 0 auto; padding: clamp(96px,13vh,150px) 24px clamp(56px,8vh,96px); position: relative; z-index: 5; }
+  .letter { max-width: 680px; margin: 0 auto; padding: clamp(48px,7vh,90px) 24px; position: relative; z-index: 5; width: 100%; box-sizing: border-box; }
   .letter-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--nbs-ink-soft); margin: 0 0 22px; }
   .letter-eyebrow .dot { color: var(--brick); }
-  .letter-body p { font-family: var(--font-serif); font-size: clamp(16px,1.55vw,20px); line-height: 1.5; color: var(--nbs-ink); margin: 0 0 0.74em; text-wrap: pretty; }
+  .letter-body p { font-family: var(--font-serif); font-size: clamp(17px,1.7vw,22px); line-height: 1.55; color: var(--nbs-ink); margin: 0 0 0.7em; text-wrap: pretty; }
   .letter-body .greeting { font-weight: 600; }
   .letter-body .hl { background: linear-gradient(180deg,transparent 56%,var(--nbs-yellow) 56%,var(--nbs-yellow) 92%,transparent 92%); padding: 0 .04em; }
   .sign-off { margin-top: 26px; }
@@ -94,6 +82,22 @@
   }
   .topbar.show { transform: translateY(0); opacity: 1; }
   .topbar.show .brand, .topbar.show .topnav { pointer-events: auto; }
+
+  /* aged-letter paper background — hero only */
+  .wall.letter-hero {
+    display: flex; align-items: center;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 35px, rgba(125,95,45,.016) 35px 36px),
+      radial-gradient(125% 95% at 50% 0%, #fbf4e1 0%, #f4ead2 52%, #ead9ba 100%);
+  }
+  .wall.letter-hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    box-shadow: inset 0 0 140px rgba(150,115,60,.22), inset 0 0 40px rgba(120,85,35,.10);
+    background:
+      radial-gradient(60% 50% at 18% 22%, rgba(150,115,55,.10), transparent 60%),
+      radial-gradient(55% 45% at 85% 78%, rgba(150,115,55,.10), transparent 60%);
+  }
+  .wall.letter-hero .letter { position: relative; z-index: 2; }
   .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
   .brand img { width: 34px; height: auto; }
   .brand .logo-h { width: auto; height: 30px; }
@@ -287,7 +291,7 @@
 </style>
 </head>
 <body>
-  <div class="wall nbs-grain">
+  <div class="wall nbs-grain letter-hero">
     <!-- Top bar -->
     <header class="topbar">
       <a class="brand" href="#">
@@ -521,7 +525,7 @@
       </div>
       <div class="values-band">
         <div class="values-rail top"><div class="rail-track"><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span></div></div>
-        <div class="track"><span class="v">Playful exploration</span><span class="sep"></span><span class="v">Ask dumb questions</span><span class="sep"></span><span class="v">Find it in the dirt</span><span class="sep"></span><span class="v">Steal like an artist</span><span class="sep"></span><span class="v">Small teams change the world</span><span class="sep"></span><span class="v">Always on</span><span class="sep"></span><span class="v">Pound the table</span><span class="sep"></span><span class="v">Bear hug founders</span><span class="sep"></span><span class="v">Overcommunicating</span><span class="sep"></span><span class="v">Overthinking</span><span class="sep"></span><span class="v">Be honest not nice</span><span class="sep"></span><span class="v">Humble without ego</span><span class="sep"></span><span class="v">Bias towards action</span><span class="sep"></span><span class="v">Friction is good</span><span class="sep"></span><span class="v">Show don’t tell</span><span class="sep"></span><span class="v">Systems not goals</span><span class="sep"></span><span class="v">Very few things truly matter</span><span class="sep"></span><span class="v">Think small</span><span class="sep"></span><span class="v">Be groovy or leave man</span><span class="sep"></span><span class="v">Anti-fragile</span><span class="sep"></span><span class="v">Last to market</span><span class="sep"></span><span class="v">Competition is for suckers</span><span class="sep"></span><span class="v">Technology isn’t computers</span><span class="sep"></span><span class="v" aria-hidden="true">Playful exploration</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Ask dumb questions</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Find it in the dirt</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Steal like an artist</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Small teams change the world</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Always on</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Pound the table</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bear hug founders</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overcommunicating</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overthinking</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be honest not nice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Humble without ego</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bias towards action</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Friction is good</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Show don’t tell</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Systems not goals</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Very few things truly matter</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Think small</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be groovy or leave man</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Anti-fragile</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Last to market</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Competition is for suckers</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Technology isn’t computers</span><span class="sep" aria-hidden="true"></span></div>
+        <div class="track"><span class="v">Playful exploration</span><span class="sep"></span><span class="v">Ask dumb questions</span><span class="sep"></span><span class="v">Async voice</span><span class="sep"></span><span class="v">Find it in the dirt</span><span class="sep"></span><span class="v">Steal like an artist</span><span class="sep"></span><span class="v">Small teams change the world</span><span class="sep"></span><span class="v">Always on</span><span class="sep"></span><span class="v">Pound the table</span><span class="sep"></span><span class="v">Bear hug founders</span><span class="sep"></span><span class="v">Overcommunicating</span><span class="sep"></span><span class="v">Overthinking</span><span class="sep"></span><span class="v">Be honest not nice</span><span class="sep"></span><span class="v">Humble without ego</span><span class="sep"></span><span class="v">Bias towards action</span><span class="sep"></span><span class="v">Friction is good</span><span class="sep"></span><span class="v">Show don’t tell</span><span class="sep"></span><span class="v">Systems not goals</span><span class="sep"></span><span class="v">Very few things truly matter</span><span class="sep"></span><span class="v">Think small</span><span class="sep"></span><span class="v">Be groovy or leave man</span><span class="sep"></span><span class="v">Anti-fragile</span><span class="sep"></span><span class="v">Last to market</span><span class="sep"></span><span class="v">Competition is for suckers</span><span class="sep"></span><span class="v">Technology isn’t computers</span><span class="sep"></span><span class="v" aria-hidden="true">Playful exploration</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Ask dumb questions</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Async voice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Find it in the dirt</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Steal like an artist</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Small teams change the world</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Always on</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Pound the table</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bear hug founders</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overcommunicating</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Overthinking</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be honest not nice</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Humble without ego</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Bias towards action</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Friction is good</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Show don’t tell</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Systems not goals</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Very few things truly matter</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Think small</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Be groovy or leave man</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Anti-fragile</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Last to market</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Competition is for suckers</span><span class="sep" aria-hidden="true"></span><span class="v" aria-hidden="true">Technology isn’t computers</span><span class="sep" aria-hidden="true"></span></div>
         <div class="values-rail bottom"><div class="rail-track"><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv">Studio values</span><span class="rsep"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span><span class="rv" aria-hidden="true">Studio values</span><span class="rsep" aria-hidden="true"></span></div></div>
       </div>
     </div>
@@ -634,8 +638,8 @@
     <div class="wrap">
       <div class="head reveal">
         <p class="eyebrow">The scrapbook</p>
-        <h2>Studio <span class="hl">moments.</span></h2>
-        <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, and the life inside the studio.</p>
+        <h2><span class="hl">Studio</span> moments.</h2>
+        <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, &amp; the life inside the studio.</p>
       </div>
 
       <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /></div></figure></div>
@@ -727,13 +731,6 @@
       if (!board) return;
       function fit() {
         board.style.setProperty('--fit', '1');
-        // Mobile: scale board to fit within 80vw (width set in CSS for <=760px)
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          var targetW = window.innerWidth * 0.8;
-          var sm = Math.min(1, targetW / board.offsetWidth);
-          board.style.setProperty('--fit', sm.toFixed(3));
-          return;
-        }
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
         board.style.setProperty('--fit', s.toFixed(3));
