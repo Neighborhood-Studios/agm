@@ -731,6 +731,13 @@
       if (!board) return;
       function fit() {
         board.style.setProperty('--fit', '1');
+        // Mobile: scale board to fit within 80vw (width set in CSS for <=760px)
+        if (window.matchMedia('(max-width: 760px)').matches) {
+          var targetW = window.innerWidth * 0.8;
+          var sm = Math.min(1, targetW / board.offsetWidth);
+          board.style.setProperty('--fit', sm.toFixed(3));
+          return;
+        }
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
         board.style.setProperty('--fit', s.toFixed(3));
