@@ -7,18 +7,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Neighborhood Studios — Annual Meeting</title>
-<meta name="description" content="Neighborhood Studios' First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Neighborhood Studios — Annual Meeting" />
-<meta property="og:description" content="First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta property="og:url" content="https://agm.neighborhoodstudios.com/" />
-<meta property="og:image" content="https://agm.neighborhoodstudios.com/og-image.jpg" />
-<meta property="og:image:width" content="1024" />
-<meta property="og:image:height" content="524" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Neighborhood Studios — Annual Meeting" />
-<meta name="twitter:description" content="First Annual General Meeting — Fri Nov 13, 8:30 AM–1 PM. Avondale Estates, GA." />
-<meta name="twitter:image" content="https://agm.neighborhoodstudios.com/og-image.jpg" />
 <link rel="stylesheet" href="./styles.css" />
 <link rel="icon" href="./assets/logos/mark.png" />
 <style>
@@ -38,7 +26,7 @@
   .letter { max-width: 680px; margin: 0 auto; padding: clamp(48px,7vh,90px) 24px; position: relative; z-index: 5; width: 100%; box-sizing: border-box; }
   .letter-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--nbs-ink-soft); margin: 0 0 22px; }
   .letter-eyebrow .dot { color: var(--brick); }
-  .letter-body p { font-family: var(--font-serif); font-size: clamp(17px,1.7vw,22px); line-height: 1.55; color: var(--nbs-ink); margin: 0 0 0.74em; text-wrap: pretty; }
+  .letter-body p { font-family: var(--font-serif); font-size: clamp(17px,1.7vw,22px); line-height: 1.55; color: var(--nbs-ink); margin: 0 0 1.15em; text-wrap: pretty; }
   .letter-body .greeting { font-weight: 600; }
   .letter-body .hl { background: linear-gradient(180deg,transparent 56%,var(--nbs-yellow) 56%,var(--nbs-yellow) 92%,transparent 92%); padding: 0 .04em; }
   .sign-off { margin-top: 26px; }
@@ -449,10 +437,10 @@
     /* ===================== Section: studio values marquee ===================== */
     /* studio values — slow single-row outlined marquee at the foot of #days */
     .values-band { margin-top: clamp(40px,6vw,80px); width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
-    .values-band .track { display: flex; align-items: center; width: max-content; gap: clamp(20px,3vw,46px); will-change: transform; animation: marq 70s linear infinite; }
+    .values-band .track { display: flex; align-items: center; width: max-content; will-change: transform; animation: marq 70s linear infinite; }
     @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .values-band .v { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(26px,3.6vw,52px); line-height: 1; letter-spacing: .01em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.6px var(--nbs-ink); }
-    .values-band .sep { width: clamp(10px,1.2vw,15px); height: clamp(10px,1.2vw,15px); flex: none; background: var(--brick); transform: rotate(45deg); border-radius: 2px; }
+    .values-band .sep { width: clamp(10px,1.2vw,15px); height: clamp(10px,1.2vw,15px); flex: none; margin: 0 clamp(20px,3vw,46px); background: var(--brick); transform: rotate(45deg); border-radius: 2px; }
     @media (prefers-reduced-motion: reduce) {
       .values-band .track { animation: none; }
       .values-band { overflow-x: auto; }
@@ -461,9 +449,9 @@
     .values-rail { width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
     .values-rail.top { margin-bottom: clamp(12px,1.6vw,20px); }
     .values-rail.bottom { margin-top: clamp(12px,1.6vw,20px); }
-    .values-rail .rail-track { display: flex; align-items: center; width: max-content; gap: clamp(14px,1.8vw,28px); will-change: transform; animation: marq 95s linear infinite reverse; }
+    .values-rail .rail-track { display: flex; align-items: center; width: max-content; will-change: transform; animation: marq 95s linear infinite reverse; }
     .values-rail .rv { font-family: var(--font-mono); font-size: clamp(10px,0.95vw,13px); letter-spacing: .2em; text-transform: uppercase; color: var(--nbs-ink-soft); white-space: nowrap; }
-    .values-rail .rsep { width: 4px; height: 4px; flex: none; background: var(--brick); border-radius: 50%; }
+    .values-rail .rsep { width: 4px; height: 4px; flex: none; margin: 0 clamp(14px,1.8vw,28px); background: var(--brick); border-radius: 50%; }
     @media (prefers-reduced-motion: reduce) {
       .values-rail .rail-track { animation: none; }
       .values-rail { overflow-x: auto; }
@@ -524,13 +512,13 @@
           <ol>
             <li><span class="t">8:30</span><div><h4>Coffee &amp; Revolution Doughnuts</h4><p>Settle in over coffee and doughnuts before we begin.</p></div></li>
             <li><span class="t">9:00</span><div><h4>Welcome + State of the Studio</h4><p>A candid look at Fund I &mdash; where we set out to go and where we are now.</p></div></li>
-            <li><span class="t">9:15</span><div><h4>Fund I Portfolio Snapshot</h4><p>A fast review of every company: what launched, what gained traction, and where each stands.</p></div></li>
+            <li><span class="t">9:15</span><div><h4>Fund I Portfolio Snapshot</h4><p>A fast review of every company: what launched, what gained traction, &amp; where each stands.</p></div></li>
             <li><span class="t">9:45</span><div><h4>Studio Founder Deep Dive: Homegrown</h4><p>An up-close look at one of our founders and the company they&rsquo;re building.</p></div></li>
-            <li><span class="t">10:15</span><div><h4>Break</h4><p>Coffee, conversation, and a chance to stretch.</p></div></li>
-            <li><span class="t">10:30</span><div><h4>How We&rsquo;re Using AI</h4><p>The ways AI is reshaping how we find, test, and build hyperlocal startups.</p></div></li>
+            <li><span class="t">10:15</span><div><h4>Break</h4><p>Coffee, conversation, &amp; a chance to stretch.</p></div></li>
+            <li><span class="t">10:30</span><div><h4>How We&rsquo;re Using AI</h4><p>The ways AI is reshaping how we find, test, &amp; build hyperlocal startups.</p></div></li>
             <li><span class="t">10:45</span><div><h4>Lessons Learned</h4><p>An honest look at the mistakes and false starts that taught us the most.</p></div></li>
             <li><span class="t">11:15</span><div><h4>The Future: Our Fund II Plans</h4><p>Where we&rsquo;re focusing next and how the studio model is evolving.</p></div></li>
-            <li><span class="t">11:30</span><div><h4>Investor Q&amp;A / Discussion</h4><p>Open questions, feedback, and discussion with the founders and team.</p></div></li>
+            <li><span class="t">11:30</span><div><h4>Investor Q&amp;A / Discussion</h4><p>Open questions, feedback, &amp; discussion with the founders and team.</p></div></li>
             <li><span class="t">12:00</span><div><h4>LP Networking &amp; Fox Bros BBQ Lunch</h4><p>Informal lunch and time to connect with the team and each other.</p></div></li>
           </ol>
         </article>
@@ -743,13 +731,6 @@
       if (!board) return;
       function fit() {
         board.style.setProperty('--fit', '1');
-        // Mobile: scale board to fit within 80vw (width set in CSS for <=760px)
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          var targetW = window.innerWidth * 0.8;
-          var sm = Math.min(1, targetW / board.offsetWidth);
-          board.style.setProperty('--fit', sm.toFixed(3));
-          return;
-        }
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
         board.style.setProperty('--fit', s.toFixed(3));
