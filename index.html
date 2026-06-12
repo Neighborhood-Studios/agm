@@ -742,9 +742,12 @@
       var board = document.querySelector('.board');
       if (!board) return;
       function fit() {
-        // Mobile: skip auto-fit scale — board sized by CSS (width: 80vw).
+        // Mobile: scale the board to fit within 80vw (width is set in CSS).
         if (window.matchMedia('(max-width: 760px)').matches) {
           board.style.setProperty('--fit', '1');
+          var targetW = window.innerWidth * 0.8;
+          var sm = Math.min(1, targetW / board.offsetWidth);
+          board.style.setProperty('--fit', sm.toFixed(3));
           return;
         }
         board.style.setProperty('--fit', '1');
