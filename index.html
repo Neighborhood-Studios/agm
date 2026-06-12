@@ -642,7 +642,7 @@
         <p class="intro">A look at the people who build our companies and the moments that happen along the way &mdash; the launches, the late nights, the small wins, &amp; the life inside the studio.</p>
       </div>
 
-      <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /></div><a class="egg e4 egg-pin to-right" href="https://www.quora.com/What-is-the-meaning-of-Mark-Twains-quote-Its-not-what-we-dont-know-that-gets-us-in-trouble-Its-what-we-know-for-sure-that-just-aint-so" target="_blank" rel="noopener" aria-label="Mark Twain"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/mark-twain.png" alt="" /></span></a></figure></div>
+      <div class="f1-row left first"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/storefront-night.jpeg" alt="The Studio, always on" /></div></figure></div>
 
       <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/january-sign.png" alt="January, launching" /></div></figure></div>
 
@@ -676,7 +676,7 @@
 
       <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/zing-team.png" alt="Zing, day one" /></div></figure></div>
 
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/ski-trip.png" alt="Big Ridge Trip to Cashiers" /></div><a class="egg e2 egg-pin to-left" href="https://www.youtube.com/watch?v=0snXUgHrnAU" target="_blank" rel="noopener" aria-label="Jeff Bezos"><span class="tip">click me</span><span class="frame"><img src="./assets/images/eggs/bezos.png" alt="" /></span></a></figure></div>
+      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/ski-trip.png" alt="Big Ridge Trip to Cashiers" /></div></figure></div>
 
       <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/deep-work.png" alt="Heads down" /></div></figure></div>
 
@@ -707,14 +707,6 @@
       <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/tubeman-army.png" alt="An army of mascots" /></div></figure></div>
 
       <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/studio-lounge.png" alt="The studio, doors open" /></div></figure></div>
-
-      <div class="f1-row right"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/couch-headphones.jpg" alt="Heads-down mode" /></div></figure></div>
-
-      <div class="f1-row left"><figure class="f1-fig tall"><div class="f1-shot"><img src="./assets/images/f1/pdf-pin-up.jpg" alt="Swiftstay launching" /></div></figure></div>
-
-      <div class="f1-row right"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/ski-crew-lineup.jpg" alt="On the slopes" /></div></figure></div>
-
-      <div class="f1-row left"><figure class="f1-fig wide"><div class="f1-shot"><img src="./assets/images/f1/dirt-pennant-crew.jpg" alt="Find it in the dirt" /></div></figure></div>
     </div>
   </section>
 
@@ -739,13 +731,6 @@
       if (!board) return;
       function fit() {
         board.style.setProperty('--fit', '1');
-        // Mobile: scale board to fit within 80vw (width set in CSS for <=760px)
-        if (window.matchMedia('(max-width: 760px)').matches) {
-          var targetW = window.innerWidth * 0.8;
-          var sm = Math.min(1, targetW / board.offsetWidth);
-          board.style.setProperty('--fit', sm.toFixed(3));
-          return;
-        }
         var avail = window.innerHeight - 96 - 40;
         var s = Math.min(1, avail / board.offsetHeight);
         board.style.setProperty('--fit', s.toFixed(3));
